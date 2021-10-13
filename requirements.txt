@@ -1,0 +1,5 @@
+Flask
+flask_bootstrap
+flask_wtf
+pymysql
+psycopg2

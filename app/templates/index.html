@@ -2,11 +2,20 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/tabulator.min.css') }}">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+<script type="text/javascript" src="{{ url_for('static',filename='scripts/jquery-3.6.0.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='scripts/tabulator.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='scripts/results.js') }}"></script>
 <h1>Type Query</h1>
 <div class="row">
     <div class="col-md-4">
         {{ wtf.quick_form(form) }}
+        <input class="btn btn-default" id="run" name="run" value="Run">
+        <input class="btn btn-default" id="clear" name="clear" value="Clear">
+        <input id="query_time">
+        <br><br>
+        <div id="results-table"></div>
     </div>
 </div>
-<!--Need to get time elapsed from db, maybe put on results page?-->
 {% endblock %}

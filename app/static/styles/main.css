@@ -1,0 +1,16 @@
+form textarea#query {
+    width: 1000px;
+    height: 150px;
+}
+
+#run, #clear {
+    width: 60px;
+}
+
+#query_time {
+    border: 0px none;
+}
+
+#results-table {
+    width: 1000px;
+}
