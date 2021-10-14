@@ -1,6 +1,4 @@
 $(document).ready(function(){
-    $("#query").val("select * from orders limit 1000;");
-
     // Clear button
     $("#clear").click(function(){
         $("#query").val("")
