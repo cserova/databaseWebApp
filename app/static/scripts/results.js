@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#query").val("select * from instacart_normalized.aisles;");
+    $("#query").val("select * from orders limit 1000;");
 
     // Clear button
     $("#clear").click(function(){
@@ -9,47 +9,47 @@ $(document).ready(function(){
 
     // Run button
     $("#run").click(function(){
-        $.ajax({
-            type : 'POST',
-            url : "/results/" + $('input[name="server"]:checked').val(),
-            contentType: 'application/json;charset=UTF-8',
-            data : JSON.stringify($("#query").val()),
-            success: function(data) {
-                const parsed_data = JSON.parse(data);
-                loadTable(parsed_data);
-            }
-        });
+        clearResults();
+        if(validateForm()) {
+            $.ajax({
+                type: 'POST',
+                url: "/results/" + $('input[name="server"]:checked').val() + "/" + $("#database").val(),
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify($("#query").val()),
+                success: function (data) {
+                    const parsed_data = JSON.parse(data);
+                    if (parsed_data[0]) loadTable(parsed_data[1]);
+                    else alert(parsed_data[1]);
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            });
+        }
     });
 });
 
 function loadTable(parsed_data) {
     clearResults();
-    let columns = [];
-    let column_headers = [];
-    $(parsed_data[0]).each(function(index, column_name){
-        columns.push(column_name);
-        column_headers.push({title: column_name, field: column_name});
-    });
     let results_table = new Tabulator("#results-table", {
         layout:"fitColumns",
-        columns: column_headers,
+        columns: parsed_data[0],
         pagination:"local",
         paginationSize:15,
     });
-
-    $(parsed_data[1]).each(function(index, row){
-        const data_map = {};
-        data_map["id"] = index + 1;
-        $(row).each(function(index, value){
-            data_map[columns[index]] = value;
-        });
-        results_table.addData(data_map, false);
-    });
-
+    results_table.addData(parsed_data[1]);
     $("#query_time").val("Query time: " + parsed_data[2]);
 }
 
 function clearResults() {
     $("#query_time").val("")
     $("#results-table").empty()
+}
+
+function validateForm() {
+    if($('input[name="server"]:checked').val()===undefined) {
+        alert("Please select a database");
+        return false;
+    }
+    return true;
 }
