@@ -13,7 +13,7 @@ $(document).ready(function(){
                 type: 'POST',
                 url: "/results/" + $('input[name="server"]:checked').val() + "/" + $("#database").val(),
                 contentType: 'application/json;charset=UTF-8',
-                data: JSON.stringify($("#query").val()),
+                data: JSON.stringify($("#query").val().replace('\n', '')),
                 success: function (data) {
                     const parsed_data = JSON.parse(data);
                     if (parsed_data[0]) loadTable(parsed_data[1]);
