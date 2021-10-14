@@ -21,3 +21,11 @@
     ```
    deactivate
    ```
+6. AWS Hosting commands
+   ```
+   ssh ec2-user@ec2-18-191-148-86.us-east-2.compute.amazonaws.com
+   tmux new -s databaseWebApp
+   tmux ls
+   tmux attach -t databaseWebApp
+   tmux kill-session -t databaseWebApp
+   ```
