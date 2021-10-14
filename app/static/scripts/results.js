@@ -31,6 +31,7 @@ $(document).ready(function(){
 
 function loadTable(parsed_data) {
     clearResults();
+    $('#table').append('<div id="results-table"></div>');
     let results_table = new Tabulator("#results-table", {
         layout:"fitColumns",
         columns: parsed_data[0],
@@ -43,7 +44,7 @@ function loadTable(parsed_data) {
 
 function clearResults() {
     $("#query_time").val("")
-    $("#results-table").empty()
+    $("#results-table").remove()
 }
 
 function validateForm() {
