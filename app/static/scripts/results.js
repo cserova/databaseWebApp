@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     // Clear button
     $("#clear").click(function(){
         $("#query").val("")
@@ -13,7 +14,7 @@ $(document).ready(function(){
                 type: 'POST',
                 url: "/results/" + $('input[name="server"]:checked').val() + "/" + $("#database").val(),
                 contentType: 'application/json;charset=UTF-8',
-                data: JSON.stringify($("#query").val().replaceAll('\n', ' ')),
+                data: $("#query").val().replaceAll('\n', ' '),
                 success: function (data) {
                     const parsed_data = JSON.parse(data);
                     if (parsed_data[0]) loadTable(parsed_data[1]);

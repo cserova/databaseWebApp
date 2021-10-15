@@ -1,0 +1,10 @@
+role arn: arn:aws:iam::049154457331:role/redshift-s3
+
+copy table-name
+from 's3-end-point-url' 
+iam_role 'arn:aws:iam::059168849261:role/rd-s3-role'
+region 'us-east-2'
+format as csv
+IGNOREHEADER 1;
+
+

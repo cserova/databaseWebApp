@@ -5,6 +5,7 @@ from app.database import get_mysql_connection, get_redshift_connection
 from app.aws_credentials import *
 import json
 import re
+from psycopg2.extensions import adapt
 
 #@app.route('/')
 @app.route('/index', methods=['GET'])
@@ -35,8 +36,11 @@ def get_results_from_redshift(database):
     return runQueryAndReturnResult(redshift_connection, str(request.data))
 
 def buildQueryFromInput(raw_query):
-    trimmed_query = raw_query[3:-2]
+    print(raw_query)
+    trimmed_query = re.sub('\\\\"', '"', raw_query[2:-1])
+    print(trimmed_query)
     query = re.sub('\s+', ' ', trimmed_query)
+    print(query)
     return query
 
 def runQueryAndReturnResult(connection, raw_query):
