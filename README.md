@@ -1,6 +1,11 @@
 # CS527 - Team 6 Project
 
-## Features
+## Libraries
+1. MySQL - pymysql
+2. Redshift - psycopg2
+3. MongoDb - pyodbc (with Simba MongoDB ODBC Driver 64-bit)
+
+## App Features
 1. Enabled Multi-line queries
 2. Handled whitespace character (like spaces)
 3. We have a keyboard shortcut too! xD ( ctrl + ‘ to run the query )
@@ -8,12 +13,6 @@
 5. Prevent accidental “clears”
 6. Download output as CSV or JSON
 7. Copy table data to clipboard
-
-## Libraries
-1. MySQL - pymysql
-2. Redshift - psycopg2
-3. MongoDb - pyodbc (with Simba MongoDB ODBC Driver 64-bit)
-
 
 ## Usage
 1. Install postgresql on mac
