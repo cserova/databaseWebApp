@@ -3,3 +3,4 @@ flask_bootstrap
 flask_wtf
 pymysql
 psycopg2-binary
+pyodbc

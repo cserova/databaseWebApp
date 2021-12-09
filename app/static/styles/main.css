@@ -3,14 +3,27 @@ form textarea#query {
     height: 150px;
 }
 
-#run, #clear {
-    width: 60px;
-}
-
 #query_time {
     border: 0px none;
+    width: 400px;
 }
 
 #results-table {
     width: 1000px;
+}
+
+#data-control {
+    display: inline-block;
+    width: 1000px;
+}
+
+button {
+    margin-right: 25px;
+}
+
+#download-controls {
+    margin-bottom: 10px;
+    padding: 10px 5px 0 5px;
+    font-size: 14px;
+    display: none;
 }

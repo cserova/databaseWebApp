@@ -11,11 +11,17 @@
 <div class="row">
     <div class="col-md-4">
         {{ wtf.quick_form(form) }}
-        <button class="btn btn-default" id="run">Run</button>
-        <button class="btn btn-default" id="clear">Clear</button>
-        <input id="query_time">
+        <div id="data-control">
+            <button class="btn btn-default" id="run">Run ( ctrl + ' )</button>
+            <button class="btn btn-default" id="clear">Clear</button>
+            <input id="query_time">
+        </div>
         <br><br>
         <div id="table"></div>
+        <div id="download-controls">
+            <button class="btn btn-default" id="download-csv">Download CSV</button>
+            <button class="btn btn-default" id="download-json">Download JSON</button>
+        </div>
     </div>
 </div>
 {% endblock %}
