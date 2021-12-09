@@ -1,5 +1,20 @@
 # CS527 - Team 6 Project
 
+## Features
+1. Enabled Multi-line queries
+2. Handled whitespace character (like spaces)
+3. We have a keyboard shortcut too! xD ( ctrl + ‘ to run the query )
+4. Display error messages
+5. Prevent accidental “clears”
+6. Download output as CSV or JSON
+7. Copy table data to clipboard
+
+## Libraries
+1. MySQL - pymysql
+2. Redshift - psycopg2
+3. MongoDb - pyodbc (with Simba MongoDB ODBC Driver 64-bit)
+
+
 ## Usage
 1. Install postgresql on mac
     ```
@@ -34,12 +49,12 @@
    ```
 8. AWS Hosting commands
    ```
-   ssh-add MongoDB_Database.pem
    ssh -i MongoDB_Database.pem ec2-user@ec2-18-117-103-187.us-east-2.compute.amazonaws.com -v
    tmux new -s databaseWebApp
    tmux ls
    tmux attach -t databaseWebApp
    tmux kill-session -t databaseWebApp
+   cd databaseWebApp
    source venv/bin/activate
    flask run --host=0.0.0.0 --port=8080
    ```
